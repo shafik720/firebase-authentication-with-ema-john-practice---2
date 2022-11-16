@@ -15,6 +15,10 @@ const Signup = () => {
     function handlePassword(e){
         setPassword(e.target.value);
     }
+    function handleConfirmPassword(e){
+        setConfirmPassword(e.target.value);
+    }
+
     function handleSubmit(e){
         e.preventDefault();
     }
