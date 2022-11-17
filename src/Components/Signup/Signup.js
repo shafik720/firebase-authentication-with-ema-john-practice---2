@@ -40,9 +40,11 @@ const Signup = () => {
             setCustomError("Password didn't Matched");
             return;
         }
-        if(error){
-            console.log(error);
-        }
+        // if(error){
+        //     console.log(error);
+        //     setCustomError(error.message);
+        //     return;
+        // }
         setCustomError("");
         createUserWithEmailAndPassword(email, password);
     }
@@ -72,7 +74,7 @@ const Signup = () => {
                                     <input type="password" name="" id="" />
                                 </div>                                
                                 <div className="text-center error-area">
-                                    <p>{customError ? customError : '' }</p>
+                                    <p>{customError }</p>
                                 </div>
                                 <button className="sign-up-button" type='submit'>Sign Up</button>
                                 <p className="signUpText">Already Have an Account ? <Link to="/login">Log in Here</Link> </p>
