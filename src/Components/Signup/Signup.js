@@ -22,6 +22,12 @@ const Signup = () => {
 
     function handleSubmit(e){
         e.preventDefault();
+        if(password.length <6){
+            setCustomError('Password must be longer than 6 character !');
+        }
+        if(password !== confirmPassword){
+            setCustomError("Password didn't Matched");
+        }
     }
     return (
         <div>
