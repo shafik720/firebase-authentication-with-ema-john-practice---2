@@ -73,6 +73,7 @@ const Signup = () => {
                                 </div>
                                 <div className="text-center error-area">
                                     <p>{customError}</p>
+                                    <p>{error?.message}</p>
                                 </div>
                                 <button className="sign-up-button" type='submit'>Sign Up</button>
                                 <p className="signUpText">Already Have an Account ? <Link to="/login">Log in Here</Link> </p>
