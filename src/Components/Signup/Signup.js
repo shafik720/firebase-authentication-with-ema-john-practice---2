@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Signup.css'
+import './Signup.css';
+import googleLogo from '../../google.svg';
 
 const Signup = () => {
     const[email, setEmail] = useState('');
@@ -52,7 +53,7 @@ const Signup = () => {
                                 <p className="signUpText">Already Have an Account ? <Link to="/login">Log in Here</Link> </p>
                                 <h4>Or</h4>
                                 <div draggable className="googleButton">
-                                    {/* <img src={googleLogo} alt=""/> */}
+                                    <img src={googleLogo} alt=""/>
                                     <h4>Sign in Using Google</h4>
                                 </div>
                             </form>

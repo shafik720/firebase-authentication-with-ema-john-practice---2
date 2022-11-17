@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import googleLogo from '../../google.svg';
+
 import './Login.css'
 
 const Login = () => {
@@ -42,7 +44,7 @@ const Login = () => {
                                 <p className="signUpText">Dont Have an Account ? <Link to="/signup">Sign Up Here</Link> </p>
                                 <h4>Or</h4>
                                 <div draggable className="googleButton">
-                                    {/* <img src={googleLogo} alt="" /> */}
+                                    <img src={googleLogo} alt="" />
                                     <h4>Sign in Using Google</h4>
                                 </div>
                             </form>
