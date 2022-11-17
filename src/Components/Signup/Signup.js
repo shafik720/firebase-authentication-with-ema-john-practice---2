@@ -39,7 +39,10 @@ const Signup = () => {
         if(password !== confirmPassword){
             setCustomError("Password didn't Matched");
             return;
-        }        
+        }
+        if(error){
+            console.log(error);
+        }
         setCustomError("");
         createUserWithEmailAndPassword(email, password);
     }
