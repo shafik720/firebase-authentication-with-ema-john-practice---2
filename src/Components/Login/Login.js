@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import googleLogo from '../../google.svg';
 
 import './Login.css'
@@ -9,6 +12,12 @@ const Login = () => {
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
     const[customError, setCustomError] = useState('');
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useSignInWithEmailAndPassword(auth);
 
     function handleEmail(e){
         setEmail(e.target.value)    ;
@@ -18,6 +27,11 @@ const Login = () => {
     }
     function handleSubmit(e){
         e.preventDefault();
+        signInWithEmailAndPassword(email, password);
+    }
+    const navigate = useNavigate();
+    if(user){
+        navigate('/');
     }
     return (
         <div>
@@ -36,9 +50,9 @@ const Login = () => {
                                     <p>Password :</p>
                                     <input onBlur={handlePassword} type="password" name="" id="" />
                                 </div>
-                                <div className="text-center">
-                                    {/* { loading && <Spinner animation="border" /> }
-                                    {error ? <p style={{ color: 'red' }}> {error?.message} </p> : <p style={{ color: 'red' }}> {customError} </p>}   */}
+                                <div className="text-center error-area">
+                                    {loading && <Spinner animation='border'></Spinner>}
+                                    {error && error.message}
                                 </div>
                                 <button>Login</button>
                                 <p className="signUpText">Dont Have an Account ? <Link to="/signup">Sign Up Here</Link> </p>
