@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Signup.css';
 import googleLogo from '../../google.svg';
 import {useCreateUserWithEmailAndPassword} from 'react-firebase-hooks/auth'
+import auth from '../../firebase.init';
 
 const Signup = () => {
     const[email, setEmail] = useState('');
@@ -38,8 +39,13 @@ const Signup = () => {
         if(password !== confirmPassword){
             setCustomError("Password didn't Matched");
             return;
-        }
+        }        
         setCustomError("");
+        createUserWithEmailAndPassword(email, password);
+    }
+    let navigate = useNavigate();
+    if(user){
+        navigate('/');
     }
     return (
         <div>
