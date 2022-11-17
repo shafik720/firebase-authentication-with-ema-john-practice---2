@@ -1,3 +1,7 @@
 .sign-up-button{
     background: linear-gradient(45deg, darkred, crimson)  !important;
 }
+
+.error-area{
+    color: red;
+}

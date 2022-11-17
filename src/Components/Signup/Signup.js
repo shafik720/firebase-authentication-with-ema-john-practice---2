@@ -24,10 +24,13 @@ const Signup = () => {
         e.preventDefault();
         if(password.length <6){
             setCustomError('Password must be longer than 6 character !');
+            return;
         }
         if(password !== confirmPassword){
             setCustomError("Password didn't Matched");
+            return;
         }
+        setCustomError("");
     }
     return (
         <div>
@@ -50,10 +53,8 @@ const Signup = () => {
                                     <p>Confirm Password :</p>
                                     <input type="password" name="" id="" />
                                 </div>                                
-                                <div className="text-center">
-                                    {/* { loading && <Spinner animation="border" /> }
-                                    <p style={{ color: 'red' }}> {error?.message} </p>
-                                    <p style={{ color: 'red' }}> {customError} </p> */}
+                                <div className="text-center error-area">
+                                    <p>{customError ? customError : '' }</p>
                                 </div>
                                 <button className="sign-up-button" type='submit'>Sign Up</button>
                                 <p className="signUpText">Already Have an Account ? <Link to="/login">Log in Here</Link> </p>
