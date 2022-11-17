@@ -5,6 +5,7 @@ import './Signup.css';
 import googleLogo from '../../google.svg';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init';
+import { Spinner } from 'react-bootstrap';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -35,17 +36,20 @@ const Signup = () => {
         e.preventDefault();
         if (password.length < 6) {
             setCustomError('Password must be longer than 6 character !');
+            error.message = '';
             return;
         }
         if (password !== confirmPassword) {
             setCustomError("Password didn't Matched");
+            error.message = null;
             return;
         }
         setCustomError("");
         createUserWithEmailAndPassword(email, password);
+        
     }
     if (error) {
-        console.log(error.message)
+        // console.log(error.message)
         // setCustomError(error.message);
     }else if (user) {
         navigate('/');
@@ -72,6 +76,7 @@ const Signup = () => {
                                     <input type="password" name="" id="" />
                                 </div>
                                 <div className="text-center error-area">
+                                    {loading && <Spinner animation="border" />}
                                     <p>{customError}</p>
                                     <p>{error?.message}</p>
                                 </div>
