@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import googleLogo from '../../google.svg';
 
@@ -32,6 +32,11 @@ const Login = () => {
     const navigate = useNavigate();
     if(user){
         navigate('/');
+    }
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    if(user){
+        navigate(from, { replace: true });
     }
     return (
         <div>
